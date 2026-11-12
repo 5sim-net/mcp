@@ -1,0 +1,32 @@
+# Smithery: local (stdio) config
+startCommand:
+  type: stdio
+  configSchema:
+    type: object
+    properties:
+      apiKey:
+        type: string
+        description: 5sim API key from https://5sim.net/settings/security
+      maxPrice:
+        type: number
+        description: Hard cap per purchase (optional)
+      readOnly:
+        type: boolean
+        default: false
+        description: Disable purchases and order changes
+  commandFunction: |-
+    (config) => ({
+      command: 'node',
+      args: ['dist/stdio.js'],
+      env: {
+        ...(config.apiKey ? { FIVESIM_API_KEY: config.apiKey } : {}),
+        ...(config.maxPrice ? { FIVESIM_MAX_PRICE: String(config.maxPrice) } : {}),
+        ...(config.readOnly ? { FIVESIM_READ_ONLY: 'true' } : {})
+      }
+    })
+  exampleConfig:
+    apiKey: your-5sim-api-key
+    maxPrice: 1
+build:
+  dockerfile: Dockerfile
+  dockerBuildPath: .

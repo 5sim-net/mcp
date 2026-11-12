@@ -1,0 +1,54 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "net.5sim/mcp",
+  "title": "5sim virtual numbers",
+  "description": "Buy virtual numbers for SMS verification and receive SMS online via 5sim.net",
+  "websiteUrl": "https://5sim.net",
+  "repository": {
+    "url": "https://github.com/5sim-net/mcp",
+    "source": "github"
+  },
+  "icons": [
+    {
+      "src": "https://raw.githubusercontent.com/5sim-net/mcp/main/icon.png",
+      "mimeType": "image/png",
+      "sizes": [
+        "400x400"
+      ]
+    }
+  ],
+  "version": "1.0.1",
+  "packages": [
+    {
+      "registryType": "npm",
+      "identifier": "@5sim-net/mcp",
+      "version": "1.0.1",
+      "runtimeHint": "npx",
+      "transport": {
+        "type": "stdio"
+      },
+      "environmentVariables": [
+        {
+          "name": "FIVESIM_API_KEY",
+          "description": "5sim API key from https://5sim.net/settings/security",
+          "isRequired": false,
+          "isSecret": true,
+          "format": "string"
+        },
+        {
+          "name": "FIVESIM_MAX_PRICE",
+          "description": "Hard cap per purchase",
+          "isRequired": false,
+          "format": "number"
+        },
+        {
+          "name": "FIVESIM_READ_ONLY",
+          "description": "Disable purchases and order changes",
+          "isRequired": false,
+          "format": "boolean",
+          "default": "false"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "name": "@5sim-net/mcp",
+  "version": "1.0.1",
+  "description": "Official 5sim MCP server: AI agents buy virtual numbers for SMS verification and receive SMS online. From $0.008, 150+ countries, 1,200+ services.",
+  "mcpName": "net.5sim/mcp",
+  "type": "module",
+  "license": "MIT",
+  "author": "5sim <support@5sim.net>",
+  "homepage": "https://github.com/5sim-net/mcp#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/5sim-net/mcp.git"
+  },
+  "bugs": "https://github.com/5sim-net/mcp/issues",
+  "keywords": [
+    "mcp",
+    "mcp-server",
+    "model-context-protocol",
+    "5sim",
+    "sms",
+    "sms-verification",
+    "receive-sms",
+    "receive-sms-online",
+    "virtual-number",
+    "virtual-phone-number",
+    "temporary-phone-number",
+    "sms-activation",
+    "phone-verification",
+    "ai-agent",
+    "ai-tools",
+    "cursor",
+    "cline"
+  ],
+  "bin": {
+    "5sim-mcp": "dist/stdio.js"
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "icon.png"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "start": "node dist/stdio.js",
+    "start:http": "node dist/http.js",
+    "inspect": "npx @modelcontextprotocol/inspector node dist/stdio.js",
+    "prepublishOnly": "npm run typecheck && npm test && npm run build"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.32.2",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "tsup": "^8.5.0",
+    "typescript": "^5.9.0",
+    "vitest": "^3.2.0"
+  }
+}

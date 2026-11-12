@@ -1,0 +1,10 @@
+name: Feature request
+description: Suggest a new tool or improvement
+labels: [enhancement]
+body:
+  - type: textarea
+    id: idea
+    attributes:
+      label: What would you like the agent to be able to do?
+    validations:
+      required: true
